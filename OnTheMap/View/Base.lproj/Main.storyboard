@@ -313,10 +313,42 @@
                                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
-                                                            <searchBar contentMode="redraw" placeholder="Where are you learning from?" translatesAutoresizingMaskIntoConstraints="NO" id="GFN-ld-ZNw">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XuG-uB-Ibm">
                                                                 <rect key="frame" x="0.0" y="52.5" width="364" height="47.5"/>
-                                                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                                                            </searchBar>
+                                                                <subviews>
+                                                                    <searchBar contentMode="redraw" placeholder="Where are you learning from?" translatesAutoresizingMaskIntoConstraints="NO" id="GFN-ld-ZNw">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="308" height="48"/>
+                                                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                                                    </searchBar>
+                                                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="zZC-V6-rvz">
+                                                                        <rect key="frame" x="316" y="0.0" width="48" height="48"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="48" id="ere-h8-tI5"/>
+                                                                            <constraint firstAttribute="height" constant="48" id="qUC-5l-2c3"/>
+                                                                        </constraints>
+                                                                    </activityIndicatorView>
+                                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="o5d-aw-LYD">
+                                                                        <rect key="frame" x="316" y="0.5" width="48" height="47"/>
+                                                                        <color key="tintColor" red="0.072109676900000003" green="0.69740331170000003" blue="0.89414536950000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="48" id="Cf1-Wa-bhj"/>
+                                                                        </constraints>
+                                                                    </imageView>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="zZC-V6-rvz" firstAttribute="leading" secondItem="GFN-ld-ZNw" secondAttribute="trailing" constant="8" id="3bU-F7-ya3"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="GFN-ld-ZNw" secondAttribute="bottom" constant="-0.5" id="5QQ-5q-HhQ"/>
+                                                                    <constraint firstItem="GFN-ld-ZNw" firstAttribute="top" secondItem="XuG-uB-Ibm" secondAttribute="top" id="EgS-GQ-wbG"/>
+                                                                    <constraint firstItem="GFN-ld-ZNw" firstAttribute="leading" secondItem="XuG-uB-Ibm" secondAttribute="leading" id="WCb-hV-BrZ"/>
+                                                                    <constraint firstItem="o5d-aw-LYD" firstAttribute="leading" secondItem="GFN-ld-ZNw" secondAttribute="trailing" constant="8" id="X4L-x7-9cF"/>
+                                                                    <constraint firstItem="zZC-V6-rvz" firstAttribute="top" secondItem="XuG-uB-Ibm" secondAttribute="top" id="eVG-a8-NHI"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="zZC-V6-rvz" secondAttribute="trailing" id="f2m-uj-73C"/>
+                                                                    <constraint firstItem="o5d-aw-LYD" firstAttribute="top" secondItem="XuG-uB-Ibm" secondAttribute="top" id="fQV-Wz-JUq"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="zZC-V6-rvz" secondAttribute="bottom" constant="-0.5" id="sgb-Kt-Jxb"/>
+                                                                    <constraint firstItem="o5d-aw-LYD" firstAttribute="trailing" secondItem="XuG-uB-Ibm" secondAttribute="trailingMargin" constant="8" id="zac-oB-3Bm"/>
+                                                                </constraints>
+                                                            </view>
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
@@ -422,6 +454,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityWeel" destination="zZC-V6-rvz" id="NJF-L3-Be7"/>
+                        <outlet property="checkedImage" destination="o5d-aw-LYD" id="3bo-dd-ojP"/>
                         <outlet property="continueButton" destination="2x2-FQ-slk" id="SKY-yI-HAG"/>
                         <outlet property="linkTextField" destination="d0r-Uo-TcB" id="QoX-6C-tAo"/>
                         <outlet property="locationSearchBar" destination="GFN-ld-ZNw" id="me8-4I-F9e"/>
@@ -617,6 +651,7 @@
         <segue reference="6gx-SW-hja"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="facebookLogo" width="512" height="512"/>
         <image name="googleLogo" width="512" height="512"/>
         <image name="icon_addpin" width="24" height="24"/>

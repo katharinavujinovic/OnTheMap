@@ -28,9 +28,6 @@ class LocationMapViewController: UIViewController, MKMapViewDelegate {
     @IBAction func logoutButtonPressed(_ sender: Any) {
         UdacityClient.logout(completionHandler: handleLogout(success:error:))
     }
-    /*
-     https://www.iosapptemplates.com/blog/swift-programming/mapkit-tutorial
-     */
     
     func loadStudentInformation() {
         UdacityClient.getStudentInformation(completionHandler: handleGetStudentInformation(studentLocations:error:))
@@ -40,6 +37,7 @@ class LocationMapViewController: UIViewController, MKMapViewDelegate {
         if success {
             self.dismiss(animated: true, completion: nil)
         } else {
+            alertMessage(title: Constants.Alarm.logoutFailed, message: error!.localizedDescription)
             print(error!)
         }
     }
@@ -47,8 +45,10 @@ class LocationMapViewController: UIViewController, MKMapViewDelegate {
     func handleGetStudentInformation(studentLocations: [StudentInformation], error: Error?)
     {
         if error != nil {
-            print(error!)
+            alertMessage(title: Constants.Alarm.fetchingInformationFailed, message: error!.localizedDescription)
         } else {
+            annotations.removeAll()
+            mapView.removeAnnotations(mapView.annotations)
             UdacityClient.studentInformation = studentLocations
             populateMap()
             self.mapView.addAnnotations(annotations)

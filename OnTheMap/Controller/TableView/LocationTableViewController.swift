@@ -38,14 +38,14 @@ class LocationTableViewController: UIViewController, UITableViewDataSource, UITa
         if success {
             self.dismiss(animated: true, completion: nil)
         } else {
-            print(error!)
+            alertMessage(title: Constants.Alarm.logoutFailed, message: error!.localizedDescription)
         }
     }
     
     func handleGetStudentInformation(studentLocations: [StudentInformation], error: Error?)
     {
         if error != nil {
-            print(error!)
+            alertMessage(title: Constants.Alarm.fetchingInformationFailed, message: error!.localizedDescription)
         } else {
             UdacityClient.studentInformation = studentLocations
             self.tableView.reloadData()

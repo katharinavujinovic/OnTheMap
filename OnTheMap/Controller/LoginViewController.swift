@@ -27,7 +27,6 @@ class LoginViewController: UIViewController {
         loginWith.isHidden = true
         googleButton.isHidden = true
         facebookButton.isHidden = true
-        
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
@@ -39,12 +38,13 @@ class LoginViewController: UIViewController {
         UIApplication.shared.open(UdacityClient.Endpoints.signUp.url)
     }
     
-    
+    // Element hidden for now
     @IBAction func googleLoginTapped(_ sender: Any) {
         setLoggingIn(true)
         // https://developers.google.com/identity/sign-in/ios/start
     }
     
+    // Element hidden for now
     @IBAction func facebookLoginTapped(_ sender: Any) {
         setLoggingIn(true)
         // https://developers.facebook.com/docs/facebook-login/ios
@@ -66,7 +66,7 @@ class LoginViewController: UIViewController {
             UdacityClient.getUserInformation(completionHandler: handleGetUserInformation(success:error:))
         } else {
             setLoggingIn(false)
-            alertMessage(title: Constants.Alarm.invalidLoginTitle, message: Constants.Alarm.invalidLoginMessage)
+            alertMessage(title: Constants.Alarm.invalidLoginTitle, message: error!.localizedDescription)
             viewDidLoad()
         }
     }
@@ -80,7 +80,7 @@ class LoginViewController: UIViewController {
         }
     }
 
-    
+    // making sure the User can't press any Buttons when Login Process is happening
     func setLoggingIn(_ loggingIn: Bool) {
         if loggingIn {
             activityIndicator.startAnimating()
@@ -102,10 +102,5 @@ class LoginViewController: UIViewController {
         passwordTextField.placeholder = passwordMessage
     }
 
-    func alertMessage(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "ok", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
 }
 

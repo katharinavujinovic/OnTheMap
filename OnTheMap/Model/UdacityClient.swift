@@ -47,7 +47,7 @@ class UdacityClient {
             case .getLocation:
                 return Endpoints.base + Endpoints.location
             case .getLocationLimit100:
-                return Endpoints.base + Endpoints.location + "?limit=100"
+                return Endpoints.base + Endpoints.location + "?limit=100&order=-updatedAt"
             case .postLocation:
                 return Endpoints.base + Endpoints.location
             case .userData:

@@ -28,6 +28,11 @@ class Constants {
         static let invalidLoginTitle = "Invalid Login"
         static let invalidLoginMessage = "Please enter a valid Email and Password"
         static let enterEmailTitle = "No Email or Password"
+        static let logoutFailed = "Logout Failed"
+        static let fetchingInformationFailed = "Fetching of Student Informations failed"
+        static let postingInformationFailed = "Couldn't Post your Location"
+        static let selectLocationTitle = "Pleace enter a Location"
+        static let selectLocationMessage = "No Coordinations for your Pin could be determined. Please enter a Location"
     }
 }
 

@@ -42,7 +42,7 @@ class SubmitLocationViewController: UIViewController, MKMapViewDelegate {
         if success {
             self.navigationController?.dismiss(animated: true, completion: nil)
         } else {
-            print(error!)
+            alertMessage(title: Constants.Alarm.postingInformationFailed, message: error!.localizedDescription)
         }
         
     }
